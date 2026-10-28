@@ -110,23 +110,31 @@
   }
   window.TangserToast = showToast;
 
-  /* 作品集视频：视口内静音自动播放，离开暂停（懒加载保证加载快） */
+  /* 作品集视频：点击播放/暂停（不做自动播放，封面常驻显示） */
   var workVideos = document.querySelectorAll(".work-thumb video");
-  if (workVideos.length && "IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        var v = en.target;
-        if (en.isIntersecting) {
-          v.play().catch(function () { /* 自动播放被浏览器拦截时静默 */ });
+  if (workVideos.length) {
+    workVideos.forEach(function (v) {
+      var thumb = v.closest(".work-thumb");
+      thumb.classList.add("has-video");
+      v.addEventListener("play", function () { thumb.classList.add("playing"); });
+      v.addEventListener("pause", function () { thumb.classList.remove("playing"); });
+      v.addEventListener("click", function () {
+        if (v.paused) {
+          v.play().catch(function () { });
         } else {
           v.pause();
         }
       });
-    }, { rootMargin: "200px 0px" });
-    workVideos.forEach(function (v) { io.observe(v); });
-  } else if (workVideos.length) {
-    /* 降级：直接尝试播放 */
-    workVideos.forEach(function (v) { v.play().catch(function () { }); });
+      /* 点击封面区域同样可播放 */
+      thumb.addEventListener("click", function (e) {
+        if (e.target === v) return;
+        if (v.paused) {
+          v.play().catch(function () { });
+        } else {
+          v.pause();
+        }
+      });
+    });
   }
 
   /* 页脚年份 */
