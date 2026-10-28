@@ -44,17 +44,26 @@
   var filterBtns = document.querySelectorAll(".filter-btn");
   var workCards = document.querySelectorAll(".work-card");
   if (filterBtns.length) {
+    function applyFilter(f) {
+      if (!f || f === "all") f = "all";
+      filterBtns.forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-filter") === f); });
+      workCards.forEach(function (card) {
+        var tags = card.getAttribute("data-tags") || "";
+        card.style.display = (f === "all" || tags.indexOf(f) > -1) ? "" : "none";
+      });
+    }
     filterBtns.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var f = btn.getAttribute("data-filter");
-        filterBtns.forEach(function (b) { b.classList.remove("active"); });
-        btn.classList.add("active");
-        workCards.forEach(function (card) {
-          var tags = card.getAttribute("data-tags") || "";
-          card.style.display = (f === "all" || tags.indexOf(f) > -1) ? "" : "none";
-        });
+        applyFilter(btn.getAttribute("data-filter"));
+        if (history.replaceState) history.replaceState(null, "", "#" + btn.getAttribute("data-filter"));
       });
     });
+    /* 支持从其他页带 hash 跳转（如 listings.html#unity） */
+    var hash = location.hash ? location.hash.slice(1) : "all";
+    if (hash !== "all") {
+      var match = document.querySelector('.filter-btn[data-filter="' + hash + '"]');
+      if (match) applyFilter(hash);
+    }
   }
 
   /* 联系表单验证 */
