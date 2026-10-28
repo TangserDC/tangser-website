@@ -110,6 +110,25 @@
   }
   window.TangserToast = showToast;
 
+  /* 作品集视频：视口内静音自动播放，离开暂停（懒加载保证加载快） */
+  var workVideos = document.querySelectorAll(".work-thumb video");
+  if (workVideos.length && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) {
+          v.play().catch(function () { /* 自动播放被浏览器拦截时静默 */ });
+        } else {
+          v.pause();
+        }
+      });
+    }, { rootMargin: "200px 0px" });
+    workVideos.forEach(function (v) { io.observe(v); });
+  } else if (workVideos.length) {
+    /* 降级：直接尝试播放 */
+    workVideos.forEach(function (v) { v.play().catch(function () { }); });
+  }
+
   /* 页脚年份 */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
