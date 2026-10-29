@@ -496,7 +496,13 @@ button { font-family: inherit; cursor: pointer; }
 }
 .avatar-badge svg { width: 14px; height: 14px; }
 .profile-card h2 { font-size: 26px; font-weight: 800; margin-bottom: 4px; }
+.name-en { font-size: 15px; font-weight: 600; color: var(--text-dark-dim); margin-left: 2px; }
 .profile-role { color: var(--cyan); font-size: 14.5px; font-weight: 600; margin-bottom: 14px; }
+.profile-contact { display: grid; gap: 8px; margin-bottom: 20px; }
+.profile-contact li { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--text-dark-dim); }
+.profile-contact svg { width: 15px; height: 15px; color: var(--cyan); flex: none; }
+.profile-contact a { color: var(--text-dark-dim); transition: color .2s ease; }
+.profile-contact a:hover { color: var(--cyan); }
 .profile-loc { display: flex; align-items: center; gap: 8px; color: var(--text-dark-dim); font-size: 14px; margin-bottom: 20px; }
 .profile-loc svg { width: 16px; height: 16px; color: var(--cyan); }
 .profile-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
@@ -506,6 +512,8 @@ button { font-family: inherit; cursor: pointer; }
 .brief-text { color: var(--text-light); font-size: 15.5px; line-height: 1.9; margin-bottom: 8px; }
 
 .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.skill-card:nth-child(4) { grid-column: span 2; }
+.skill-card:nth-child(5) { grid-column: span 1; }
 .skill-card {
   background: var(--ink-800); border: 1px solid var(--line-dark); border-radius: var(--radius);
   padding: 28px; transition: transform .22s ease, border-color .22s ease;
@@ -539,6 +547,8 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 760px) {
   .skill-grid { grid-template-columns: 1fr; }
+  .skill-card:nth-child(4),
+  .skill-card:nth-child(5) { grid-column: auto; }
   .profile-card { padding: 28px 22px; }
   .edu-card { padding: 24px 20px; }
   .profile-actions { flex-direction: column; }
