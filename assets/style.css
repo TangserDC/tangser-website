@@ -327,7 +327,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
 .filter-btn.active { background: var(--ink-900); border-color: var(--ink-900); color: var(--cyan); }
-.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.work-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .work-card {
   background: #fff; border: 1px solid var(--line-light); border-radius: var(--radius); overflow: hidden;
   transition: transform .22s ease, box-shadow .22s ease;
