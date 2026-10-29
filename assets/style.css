@@ -357,6 +357,14 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px; backdrop-filter: blur(6px);
   border: 1px solid rgba(34, 211, 238, .3);
 }
+.award-badge {
+  position: absolute; top: 12px; right: 12px; z-index: 3;
+  display: inline-flex; align-items: center; gap: 5px;
+  background: linear-gradient(135deg, #F59E0B, #D97706); color: #fff;
+  font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px;
+  box-shadow: 0 2px 12px rgba(217, 119, 6, .4);
+}
+.award-badge svg { width: 13px; height: 13px; }
 .work-body { padding: 20px 22px 22px; }
 .work-body h3 { font-size: 17.5px; font-weight: 700; margin-bottom: 6px; }
 .work-body p { font-size: 14px; color: var(--text-light-dim); }
@@ -575,6 +583,29 @@ button { font-family: inherit; cursor: pointer; }
 .game-shot img { width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .5s ease; }
 .game-shot:hover img { transform: scale(1.04); }
 
+/* ============================================================
+   平面设计详情页
+   ============================================================ */
+.ps-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ps-shot { margin: 0; border-radius: 14px; overflow: hidden; background: var(--ink-800); }
+.ps-shot img { width: 100%; display: block; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .5s ease; }
+.ps-shot:hover img { transform: scale(1.04); }
+.ps-shot figcaption { padding: 12px 4px 4px; font-size: 13.5px; color: var(--text-light-dim); text-align: center; }
+.ps-cert { margin: 0; }
+.ps-cert img {
+  width: 100%; display: block; border-radius: 14px; max-width: 620px; margin: 0 auto;
+  box-shadow: var(--shadow);
+}
+.ps-cert figcaption { padding: 12px 4px 2px; font-size: 13.5px; color: var(--text-light-dim); text-align: center; }
+.ps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+.ps-item { margin: 0; }
+.ps-item img {
+  width: 100%; display: block; border-radius: 14px; aspect-ratio: 4 / 3; object-fit: cover; box-shadow: var(--shadow);
+}
+.ps-item figcaption { padding: 12px 4px 2px; }
+.ps-item figcaption strong { display: block; font-size: 15px; margin-bottom: 4px; }
+.ps-item figcaption span { font-size: 13.5px; color: var(--text-light-dim); line-height: 1.7; display: block; }
+
 .vid-wrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
 .vid-item .work-thumb { aspect-ratio: 16 / 9; border-radius: 14px; }
 .vid-item.v { max-width: 340px; }
@@ -599,10 +630,12 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 1080px) {
   .game-gallery { grid-template-columns: repeat(2, 1fr); }
   .vid-wrap.traps { grid-template-columns: repeat(3, 1fr); }
+  .ps-gallery { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
   .game-gallery { grid-template-columns: 1fr; }
   .vid-wrap { grid-template-columns: 1fr; }
   .vid-item.v { max-width: none; }
   .vid-wrap.traps { grid-template-columns: repeat(2, 1fr); }
+  .ps-gallery, .ps-grid { grid-template-columns: 1fr; }
 }
