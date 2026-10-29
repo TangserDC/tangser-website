@@ -561,3 +561,48 @@ button { font-family: inherit; cursor: pointer; }
   .edu-card { padding: 24px 20px; }
   .profile-actions { flex-direction: column; }
 }
+
+/* ============================================================
+   Unity 游戏详情页
+   ============================================================ */
+.game-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.game-meta span {
+  background: rgba(34, 211, 238, .09); color: #22D3EE; border: 1px solid rgba(34, 211, 238, .26);
+  padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
+}
+.game-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.game-shot { margin: 0; border-radius: 14px; overflow: hidden; background: var(--ink-800); }
+.game-shot img { width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .5s ease; }
+.game-shot:hover img { transform: scale(1.04); }
+
+.vid-wrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.vid-item .work-thumb { aspect-ratio: 16 / 9; border-radius: 14px; }
+.vid-item.v { max-width: 340px; }
+.vid-item.v .work-thumb { aspect-ratio: 9 / 16; }
+.vid-item h4 { margin: 13px 0 4px; font-size: 15.5px; font-weight: 700; }
+.vid-item p { margin: 0; font-size: 13.5px; color: var(--text-light-dim); line-height: 1.7; }
+.vid-item .work-thumb.has-video::after { border-width: 3px; }
+.vid-wrap.traps { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.vid-wrap.traps .vid-item { }
+.vid-wrap.traps .vid-item .work-thumb { aspect-ratio: 4 / 3; }
+.vid-wrap.traps .vid-item h4 { font-size: 14px; }
+.vid-wrap.traps .vid-item p { font-size: 12.5px; }
+.cta-tile {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; height: 100%; min-height: 130px; text-align: center; text-decoration: none;
+  border: 1.5px dashed rgba(34, 211, 238, .45); border-radius: 14px;
+  color: #22D3EE; font-weight: 700; font-size: 14.5px; line-height: 1.6;
+  background: rgba(34, 211, 238, .05); transition: background .3s ease, border-color .3s ease;
+}
+.cta-tile:hover { background: rgba(34, 211, 238, .13); border-color: #22D3EE; }
+.cta-tile svg { width: 20px; height: 20px; }
+@media (max-width: 1080px) {
+  .game-gallery { grid-template-columns: repeat(2, 1fr); }
+  .vid-wrap.traps { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 760px) {
+  .game-gallery { grid-template-columns: 1fr; }
+  .vid-wrap { grid-template-columns: 1fr; }
+  .vid-item.v { max-width: none; }
+  .vid-wrap.traps { grid-template-columns: repeat(2, 1fr); }
+}
