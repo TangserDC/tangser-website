@@ -598,6 +598,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .ps-cert figcaption { padding: 12px 4px 2px; font-size: 13.5px; color: var(--text-light-dim); text-align: center; }
 .ps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+.ps-grid.tri { grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .ps-item { margin: 0; }
 .ps-item img {
   width: 100%; display: block; border-radius: 14px; aspect-ratio: 4 / 3; object-fit: cover; box-shadow: var(--shadow);
@@ -637,5 +638,5 @@ button { font-family: inherit; cursor: pointer; }
   .vid-wrap { grid-template-columns: 1fr; }
   .vid-item.v { max-width: none; }
   .vid-wrap.traps { grid-template-columns: repeat(2, 1fr); }
-  .ps-gallery, .ps-grid { grid-template-columns: 1fr; }
+  .ps-gallery, .ps-grid, .ps-grid.tri { grid-template-columns: 1fr; }
 }
